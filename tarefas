@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+import sys
+from src.utils import define_data
+from src.lpsolver import solver
+
+def main():
+    if len(sys.argv) > 1:
+        try:
+            file = open(sys.argv[1], 'r')
+        except IOError:
+            print("O arquivo '%s' não foi encontrado!" % sys.argv[1])
+            exit(1)
+
+        h, u, c, x, zeros, N, K = define_data(file)
+
+        solver(h, u, c, x, zeros, N, K)
+    else:
+        print("Para utilizar o programa deve-se passar um arquivo nos padrões definidos!")
+
+if __name__ == "__main__":
+    main()
+    
